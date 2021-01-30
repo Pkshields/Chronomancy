@@ -22,6 +22,8 @@ plugins {
 dependencies {
     implementation(kotlin("stdlib"))
 
+    implementation("org.koin:koin-core:2.2.2")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
     testImplementation("io.mockk:mockk:1.10.5")
