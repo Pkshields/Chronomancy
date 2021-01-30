@@ -1,9 +1,9 @@
 package dev.paulshields.chronomancy.common
 
 import assertk.assertThat
+import dev.paulshields.chronomancy.testcommon.containsAll
 import org.junit.Before
 import org.junit.Test
-import dev.paulshields.chronomancy.testcommon.containsAll
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
