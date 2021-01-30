@@ -15,4 +15,11 @@ plugins {
 
 dependencies {
     implementation(kotlin("stdlib"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
+    testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.23")
+    testImplementation("org.koin:koin-test:2.2.2")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
