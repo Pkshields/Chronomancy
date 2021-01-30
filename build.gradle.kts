@@ -1,5 +1,11 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 group = "dev.paulshields.chronomancy"
 version = "1.0-SNAPSHOT"
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
 
 repositories {
     mavenCentral()
@@ -18,6 +24,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
+    testImplementation("io.mockk:mockk:1.10.5")
     testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.23")
     testImplementation("org.koin:koin-test:2.2.2")
 
