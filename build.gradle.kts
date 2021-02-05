@@ -23,6 +23,8 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation("org.koin:koin-core:2.2.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    implementation("com.jessecorbett:diskord:1.8.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")

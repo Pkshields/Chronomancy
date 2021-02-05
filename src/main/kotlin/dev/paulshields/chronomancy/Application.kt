@@ -1,7 +1,9 @@
 package dev.paulshields.chronomancy
 
-class Application {
-    fun start() {
-        println("Bot goes here")
+import dev.paulshields.chronomancy.bot.ChronomancyBot
+
+class Application(private val chronomancyBot: ChronomancyBot) {
+    suspend fun start() {
+        chronomancyBot.startListening()
     }
 }
