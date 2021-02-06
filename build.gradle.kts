@@ -19,6 +19,11 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint").version("9.4.1")
 }
 
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    verbose.set(true)
+    ignoreFailures.set(true)
+}
+
 dependencies {
     implementation(kotlin("stdlib"))
 
