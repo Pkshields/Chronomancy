@@ -1,11 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 group = "dev.paulshields.chronomancy"
 version = "1.0-SNAPSHOT"
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
 
 repositories {
     mavenCentral()
@@ -19,23 +16,32 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint").version("9.4.1")
 }
 
-configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+configure<KtlintExtension> {
     verbose.set(true)
     ignoreFailures.set(true)
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
 
     implementation("org.koin:koin-core:2.2.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    implementation("io.ktor:ktor-server-netty:1.3.2")
     implementation("com.jessecorbett:diskord:1.8.1")
+
+    // Temporary due to the need to downgrade ktor, due to the version conflict with the diskord transitive dependency
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.21")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
     testImplementation("io.mockk:mockk:1.10.5")
     testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.23")
     testImplementation("org.koin:koin-test:2.2.2")
+    testImplementation("io.ktor:ktor-server-test-host:1.3.2")
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
