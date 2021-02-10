@@ -4,12 +4,16 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 group = "dev.paulshields.chronomancy"
 version = "1.0-SNAPSHOT"
 
+val mainClassLocation = "dev.paulshields.chronomancy.DependencyInjectionKt"
+
 repositories {
     mavenCentral()
     gradlePluginPortal()
 }
 
 plugins {
+    application
+
     kotlin("jvm") version "1.4.21"
 
     id("io.gitlab.arturbosch.detekt").version("1.16.0-RC1")
@@ -44,4 +48,19 @@ dependencies {
     testImplementation("io.ktor:ktor-server-test-host:1.3.2")
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+}
+
+application {
+    mainClass.set(mainClassLocation)
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = mainClassLocation
+    }
+    from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+}
+
+tasks.create("stage") {
+    dependsOn("clean", "build")
 }
