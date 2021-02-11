@@ -61,6 +61,12 @@ tasks.withType<Jar> {
     from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
-tasks.create("stage") {
-    dependsOn("clean", "build")
+tasks {
+    create("stage") {
+        dependsOn("build", "clean")
+    }
+
+    "build" {
+        mustRunAfter("clean")
+    }
 }
