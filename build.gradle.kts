@@ -58,7 +58,7 @@ tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = mainClassLocation
     }
-    from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
 tasks {
