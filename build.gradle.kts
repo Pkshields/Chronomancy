@@ -32,6 +32,10 @@ detekt {
     config = files("detekt-config.yml")
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 

@@ -5,6 +5,7 @@ import dev.paulshields.chronomancy.api.keepalive.KeepAliveApiRoutes
 import dev.paulshields.chronomancy.bot.ChronomancyBot
 import dev.paulshields.chronomancy.bot.ChronomancyBotController
 import dev.paulshields.chronomancy.bot.discord.DiscordBotFactory
+import dev.paulshields.chronomancy.bot.time.TimeService
 import dev.paulshields.chronomancy.common.ResourceFileReader
 import dev.paulshields.chronomancy.common.getInstance
 import dev.paulshields.chronomancy.config.ChronomancyConfiguration
@@ -23,7 +24,8 @@ val dependencies = module {
 
     single { ChronomancyBot(get(), get(), get()) }
     single { DiscordBotFactory() }
-    single { ChronomancyBotController() }
+    single { ChronomancyBotController(get()) }
+    single { TimeService() }
 
     single { ChronomancyApi(get(), get()) }
     single { KeepAliveApiRoutes() }
