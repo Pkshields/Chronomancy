@@ -18,8 +18,7 @@ class TimeServiceTest {
         "21:45" to ZonelessTime(21, 45),
         "9pm" to ZonelessTime(21, 0),
         "9 am" to ZonelessTime(9, 0),
-        "9:30pm" to ZonelessTime(21, 30),
-        "9" to ZonelessTime(9, 0)
+        "9:30pm" to ZonelessTime(21, 30)
     ).runTest { (input, expectedOutput) ->
         val output = target.extractTimeFromMessage(input)
 
@@ -33,6 +32,13 @@ class TimeServiceTest {
         "!@£$%^&*()"
     ).runTest { input ->
         val output = target.extractTimeFromMessage(input)
+
+        assertThat(output).isNull()
+    }
+
+    @TestFactory
+    fun `should return null if the service detects a number without any time related context`() {
+        val output = target.extractTimeFromMessage("9")
 
         assertThat(output).isNull()
     }
