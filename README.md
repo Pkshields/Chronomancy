@@ -32,7 +32,3 @@ Run `./gradlew test` to run the unit tests.
 ### Lint the source files
 
 Run a static analysis check using [Detekt](https://github.com/detekt/detekt) and [ktlint](https://github.com/pinterest/ktlint) over the source files by executing `./gradlew check`.
-
-## Deployment
-
-TBD

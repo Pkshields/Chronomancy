@@ -17,7 +17,7 @@ plugins {
     kotlin("jvm") version "1.4.21"
 
     id("io.gitlab.arturbosch.detekt").version("1.16.0-RC1")
-    id("org.jlleitschuh.gradle.ktlint").version("9.4.1")
+    id("org.jlleitschuh.gradle.ktlint").version("10.0.0")
 }
 
 tasks.withType<KotlinCompile> {
@@ -26,7 +26,10 @@ tasks.withType<KotlinCompile> {
 
 configure<KtlintExtension> {
     verbose.set(true)
-    ignoreFailures.set(true)
+}
+
+detekt {
+    config = files("detekt-config.yml")
 }
 
 dependencies {
